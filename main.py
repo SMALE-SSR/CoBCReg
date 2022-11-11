@@ -78,7 +78,7 @@ if __name__ == '__main__':
                 base_learner.add(Dense(1))
                 base_learner.add(Activation('linear'))
                 base_learner.compile(loss='mean_squared_error',
-                                     optimizer=SGD(), metrics=['accuracy'])
+                                     optimizer=SGD(), metrics=['RootMeanSquaredError'])
 
                 cobcreg = CoBCReg(
                     base_learner,
