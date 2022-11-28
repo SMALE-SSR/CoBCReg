@@ -57,7 +57,7 @@ if __name__ == '__main__':
     for run in range(20):
         print('第 {} 次实验开始'.format(run + 1))
 
-        for scale in [.05, 0.10, .15]:
+        for scale in [.10, 0.05, .025]:
             print('------------split data size: {}---------------'.format(scale))
 
             for file_name in data_dir:
@@ -100,11 +100,10 @@ if __name__ == '__main__':
                     'rmse': rmse
                 }
 
-                save_path = './experiment/{}'.format(file)
+                save_path = './experiment/{}/{}'.format(file, scale)
                 if not os.path.exists(save_path):
-                    os.mkdir(save_path)
-                pd.DataFrame(experiment, index=[0]).to_csv('{}/{}-{}-{}.csv'.format(
+                    os.makedirs(save_path)
+                pd.DataFrame(experiment, index=[0]).to_csv('{}/{}-{}.csv'.format(
                     save_path,
                     run,
-                    scale,
                     datetime.datetime.now().strftime("%Y-%m-%d %H-%M-%S")))

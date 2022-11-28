@@ -136,7 +136,8 @@ class CoBCReg:
             x_u.columns = self.labeled_data_L_container[j].columns
             # 将当前 x_u 添加到 L_j 中, 并训练新的回归器用于计算 epsilon‘
             tmp_l_j = pd.concat([self.labeled_data_L_container[j], x_u])
-            new_learner = copy.deepcopy(self.learner)
+            # new_learner = copy.deepcopy(self.learner)
+            new_learner = self.learner
             self.train_inner_learner(new_learner, tmp_l_j)
 
             # 计算 x_u 置信度
